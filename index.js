@@ -12,3 +12,14 @@ async function starter() {
     }
 }
 starter();
+
+process.on('unhandledRejection', (reason, promise) => {
+    //   logger.error('Unhandled Rejection at:', promise, 'reason:', reason);
+    // Optional: gracefully close server and exit process
+    app.close(() => process.exit(1));
+});
+process.on('uncaughtException', (error) => {
+    //   logger.error('Uncaught Exception:', error);
+    // Optional: gracefully close server and exit process
+    // app.close(() => process.exit(1));
+});

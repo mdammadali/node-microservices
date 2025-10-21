@@ -13,7 +13,7 @@ class AppError extends Error {
 }
 
 export default AppError;
-export const handleError = (err, req, res, next) => {
+export const errorHandlerMiddleware = (err, req, res, next) => {
     const statusCode = err.statusCode || 500;
     const isOperational = `${statusCode}`.startsWith('4');
     res.status(statusCode).json({
